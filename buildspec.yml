@@ -5,7 +5,7 @@ env:
     AWS_REGION: "us-east-1" # Set the AWS Region
     REPOSITORY_NAME: "myrepo/cicd" # ECR repository name
     GITHUB_REPO: "https://github.com/Rahuljondhale853/nodejs" #ECR repository name
-     AWS_ACCOUNT_ID: "337909742643" # AWS Account ID
+    AWS_ACCOUNT_ID: "337909742643" # AWS Account ID
 
 phases:
   install:
@@ -15,6 +15,7 @@ phases:
       - echo "Installing dependencies and preparing Docker environment..."
       - echo "Logging into Amazon ECR..."
       - aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
+      
   pre_build:
     commands:
       - echo "Setting environment variables..."
